@@ -12,7 +12,7 @@ export default function Katalog() {
       <ShopBar />
       <div className="banner">
         <strong>{DEADLINE ? `Sammelbestellung bis ${DEADLINE}` : 'Sammelbestellung läuft, Frist folgt'}</strong>
-        <span>Wähle Größe und Artikel. Bestellt wird gesammelt, bezahlt wird später direkt beim Verein.</span>
+        <span>Wähle Größe und Artikel. Bestellt wird gesammelt, bezahlt wird später mit der Jugendleitung.</span>
       </div>
       <section className="hero">
         <h1>Vereinskleidung</h1>

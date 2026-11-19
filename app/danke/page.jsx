@@ -25,7 +25,7 @@ export default function Danke() {
       </div>
       <h1>Danke für Deine Bestellung</h1>
       <p className="sub">
-        Wir haben Deine Auswahl erhalten. Nach Ablauf der Frist bekommst Du per E-Mail die Infos zur Bezahlung und Übergabe.
+        Wir haben Deine Auswahl erhalten. Bestellt wird gesammelt bis zum 01.01.2027, bezahlt wird später mit der Jugendleitung.
       </p>
       {order && (
         <div className="summary">

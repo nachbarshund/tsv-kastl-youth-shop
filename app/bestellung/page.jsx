@@ -74,7 +74,7 @@ export default function Bestellung() {
           <input id="phone" name="phone" type="tel" required placeholder="0170 1234567" autoComplete="tel" />
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginTop: 8, paddingBottom: 32 }}>
-          <p className="note">Bezahlt wird nicht im Shop. Du bekommst die Zahlungsinfos nach Ablauf der Frist.</p>
+          <p className="note">Bezahlt wird nicht im Shop, sondern später mit der Jugendleitung.</p>
           <button type="submit" className="btn">Bestellung abschicken</button>
         </div>
       </form>
