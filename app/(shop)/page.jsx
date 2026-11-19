@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import { ShopBar } from '../components/TopBar';
-import Silhouette from '../components/Silhouette';
-import { PRODUCTS, DEADLINE, euro } from '../lib/products';
+import { ShopBar } from '../../components/TopBar';
+import Silhouette from '../../components/Silhouette';
+import { PRODUCTS, DEADLINE, euro } from '../../lib/products';
 
 export default function Katalog() {
   return (

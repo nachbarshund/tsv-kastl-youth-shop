@@ -1,9 +1,9 @@
 'use client';
 import Link from 'next/link';
-import { BackBar } from '../../components/TopBar';
-import Silhouette from '../../components/Silhouette';
-import { useCart } from '../../components/CartProvider';
-import { getProduct, euro } from '../../lib/products';
+import { BackBar } from '../../../components/TopBar';
+import Silhouette from '../../../components/Silhouette';
+import { useCart } from '../../../components/CartProvider';
+import { getProduct, euro } from '../../../lib/products';
 
 export default function Warenkorb() {
   const { items, ready, setQty, remove } = useCart();
