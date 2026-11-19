@@ -5,6 +5,7 @@ import Silhouette from '../components/Silhouette';
 import { PRODUCTS, DEADLINE, euro } from '../lib/products';
 
 export const dynamic = 'force-dynamic';
+export const metadata = { title: 'Vereinskleidung · Jugendshop TSV Kastl' };
 
 export default function Katalog() {
   return (

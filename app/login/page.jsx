@@ -1,4 +1,4 @@
-export const metadata = { title: 'Login · Jugendshop TSV Kastl' };
+export const metadata = { title: 'Login' };
 
 export default async function LoginPage({ searchParams }) {
   const sp = await searchParams;
