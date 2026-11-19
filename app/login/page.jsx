@@ -17,6 +17,9 @@ export default async function LoginPage({ searchParams }) {
       <form className="login-form" method="POST" action="/api/login">
         <label htmlFor="pw">Passwort</label>
         <input id="pw" name="password" type="password" className="pw" placeholder="Passwort eingeben" autoComplete="current-password" required />
+        {!process.env.SHOP_PASSWORD && (
+          <p className="error" role="alert">Der Shop ist noch nicht eingerichtet (SHOP_PASSWORD fehlt).</p>
+        )}
         {error && <p className="error" role="alert">Das Passwort stimmt nicht. Versuch es noch einmal.</p>}
         <button type="submit" className="btn">Zum Shop</button>
       </form>
