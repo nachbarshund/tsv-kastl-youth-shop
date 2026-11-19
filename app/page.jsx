@@ -1,11 +1,14 @@
 import Link from 'next/link';
-import { ShopBar } from '../../components/TopBar';
-import Silhouette from '../../components/Silhouette';
-import { PRODUCTS, DEADLINE, euro } from '../../lib/products';
+import Gate from '../components/Gate';
+import { ShopBar } from '../components/TopBar';
+import Silhouette from '../components/Silhouette';
+import { PRODUCTS, DEADLINE, euro } from '../lib/products';
+
+export const dynamic = 'force-dynamic';
 
 export default function Katalog() {
   return (
-    <>
+    <Gate>
       <ShopBar />
       <div className="banner">
         <strong>{DEADLINE ? `Sammelbestellung bis ${DEADLINE}` : 'Sammelbestellung läuft, Frist folgt'}</strong>
@@ -28,6 +31,6 @@ export default function Katalog() {
           </Link>
         ))}
       </div>
-    </>
+    </Gate>
   );
 }

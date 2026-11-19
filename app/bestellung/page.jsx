@@ -1,9 +1,9 @@
 'use client';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { BackBar } from '../../../components/TopBar';
-import { useCart } from '../../../components/CartProvider';
-import { getProduct, euro } from '../../../lib/products';
+import { BackBar } from '../../components/TopBar';
+import { useCart } from '../../components/CartProvider';
+import { getProduct, euro } from '../../lib/products';
 
 export default function Bestellung() {
   const router = useRouter();

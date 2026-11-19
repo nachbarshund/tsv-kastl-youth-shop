@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { euro } from '../../../lib/products';
+import { euro } from '../../lib/products';
 
 export default function Danke() {
   const [order, setOrder] = useState(null);

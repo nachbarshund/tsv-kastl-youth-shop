@@ -1,9 +1,9 @@
 'use client';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import Silhouette from '../../../../components/Silhouette';
-import { useCart } from '../../../../components/CartProvider';
-import { SIZES, euro } from '../../../../lib/products';
+import Silhouette from '../../../components/Silhouette';
+import { useCart } from '../../../components/CartProvider';
+import { SIZES, euro } from '../../../lib/products';
 
 export default function ProductView({ product }) {
   const router = useRouter();
