@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import Silhouette from '../../../components/Silhouette';
+import ProductImage from '../../../components/ProductImage';
 import { useCart } from '../../../components/CartProvider';
 import { euro } from '../../../lib/products';
 
@@ -31,7 +31,7 @@ export default function ProductView({ product }) {
   return (
     <div className="detail">
       <div className="tile">
-        <Silhouette kind={product.kind} size={200} />
+        <ProductImage product={product} size={200} />
       </div>
       <div className="detail-body">
         <h1>{product.name}</h1>

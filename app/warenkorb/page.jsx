@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { BackBar } from '../../components/TopBar';
-import Silhouette from '../../components/Silhouette';
+import ProductImage from '../../components/ProductImage';
 import { useCart } from '../../components/CartProvider';
 import { getProduct, euro, cartName } from '../../lib/products';
 
@@ -24,7 +24,7 @@ export default function Warenkorb() {
           <div className="lines">
             {lines.map((l) => (
               <div className="line" key={l.id + l.size}>
-                <div className="thumb"><Silhouette kind={l.product.kind} size={52} /></div>
+                <div className="thumb"><ProductImage product={l.product} size={52} /></div>
                 <div className="line-main">
                   <div className="row">
                     <span className="t">{cartName(l.product)}</span>

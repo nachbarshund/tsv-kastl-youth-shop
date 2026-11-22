@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Gate from '../components/Gate';
 import { ShopBar } from '../components/TopBar';
-import Silhouette from '../components/Silhouette';
+import ProductImage from '../components/ProductImage';
 import { PRODUCTS, GROUPS, DEADLINE, euro } from '../lib/products';
 
 export const dynamic = 'force-dynamic';
@@ -29,7 +29,7 @@ export default function Katalog() {
               {list.map((p) => (
                 <Link key={p.id} href={`/produkt/${p.id}`} className="card">
                   <div className="tile">
-                    <Silhouette kind={p.kind} size={96} />
+                    <ProductImage product={p} size={96} />
                   </div>
                   <div>
                     <div className="name">{p.name}</div>
