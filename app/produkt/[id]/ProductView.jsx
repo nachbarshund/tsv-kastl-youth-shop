@@ -3,11 +3,11 @@ import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import Silhouette from '../../../components/Silhouette';
 import { useCart } from '../../../components/CartProvider';
-import { SIZES, euro } from '../../../lib/products';
+import { euro } from '../../../lib/products';
 
 export default function ProductView({ product }) {
   const { add } = useCart();
-  const [size, setSize] = useState('140');
+  const [size, setSize] = useState(product.sizes.includes('140') ? '140' : product.sizes[0]);
   const [qty, setQty] = useState(1);
   const [sheet, setSheet] = useState(null);
   const [open, setOpen] = useState(false);
@@ -40,7 +40,7 @@ export default function ProductView({ product }) {
 
         <div className="label">Größe</div>
         <div className="sizes">
-          {SIZES.map((s) => (
+          {product.sizes.map((s) => (
             <button key={s} className="size" aria-pressed={size === s} onClick={() => setSize(s)}>
               {s}
             </button>

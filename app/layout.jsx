@@ -1,5 +1,6 @@
 import './globals.css';
 import { CartProvider } from '../components/CartProvider';
+import Footer from '../components/Footer';
 
 const TITLE = 'Jugendshop · TSV Kastl';
 const DESCRIPTION = 'Sammelbestellung für Vereinskleidung der TSV Kastl Jugend';
@@ -52,7 +53,7 @@ export default function RootLayout({ children }) {
     <html lang="de">
       <body>
         <CartProvider>
-          <div className="shell">{children}</div>
+          <div className="shell">{children}<Footer /></div>
         </CartProvider>
       </body>
     </html>

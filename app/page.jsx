@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Gate from '../components/Gate';
 import { ShopBar } from '../components/TopBar';
 import Silhouette from '../components/Silhouette';
-import { PRODUCTS, DEADLINE, euro } from '../lib/products';
+import { PRODUCTS, GROUPS, DEADLINE, euro } from '../lib/products';
 
 export const dynamic = 'force-dynamic';
 export const metadata = { title: 'Vereinskleidung · Jugendshop TSV Kastl' };
@@ -17,21 +17,30 @@ export default function Katalog() {
       </div>
       <section className="hero">
         <h1>Vereinskleidung</h1>
-        <p>Für Mädchen und Jungs</p>
+        <p>Für Kinder, Damen und Herren</p>
       </section>
-      <div className="grid">
-        {PRODUCTS.map((p) => (
-          <Link key={p.id} href={`/produkt/${p.id}`} className="card">
-            <div className="tile">
-              <Silhouette kind={p.kind} size={96} />
+      {GROUPS.map((g) => {
+        const list = PRODUCTS.filter((p) => p.group === g.id);
+        if (!list.length) return null;
+        return (
+          <section key={g.id}>
+            <h2 style={{ margin: '24px 16px 8px', fontSize: 18 }}>{g.label}</h2>
+            <div className="grid">
+              {list.map((p) => (
+                <Link key={p.id} href={`/produkt/${p.id}`} className="card">
+                  <div className="tile">
+                    <Silhouette kind={p.kind} size={96} />
+                  </div>
+                  <div>
+                    <div className="name">{p.name}</div>
+                    <div className="price">{euro(p.price)}</div>
+                  </div>
+                </Link>
+              ))}
             </div>
-            <div>
-              <div className="name">{p.name}</div>
-              <div className="price">{euro(p.price)}</div>
-            </div>
-          </Link>
-        ))}
-      </div>
+          </section>
+        );
+      })}
     </Gate>
   );
 }
