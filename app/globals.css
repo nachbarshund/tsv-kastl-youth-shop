@@ -156,3 +156,4 @@ button, input { font-family: inherit; }
 .card .name { min-height: 2.6em; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .detail .tile { width: auto; }
 @media (min-width: 760px) { .detail-body { padding: 20px 20px 24px 8px; } }
+.tile img.flock { inset: auto; height: auto; padding: 0; transform: translate(-50%, -50%); filter: invert(1); mix-blend-mode: screen; pointer-events: none; }

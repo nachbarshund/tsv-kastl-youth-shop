@@ -31,12 +31,13 @@ export default function ProductView({ product }) {
   return (
     <div className="detail">
       <div className="tile">
-        <ProductImage product={product} size={200} />
+        <ProductImage product={product} size={200} showFlock />
       </div>
       <div className="detail-body">
         <h1>{product.name}</h1>
         <span className="price">{euro(product.price)}</span>
         <p className="desc">{product.desc}</p>
+        {product.flock && <p className="desc">Vorschau: Vereinslogo in Weiß auf der Brust.</p>}
 
         <div className="label">Größe</div>
         <div className="sizes">
