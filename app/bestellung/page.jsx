@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { BackBar } from '../../components/TopBar';
 import { useCart } from '../../components/CartProvider';
-import { getProduct, euro } from '../../lib/products';
+import { getProduct, euro, cartName } from '../../lib/products';
 
 export default function Bestellung() {
   const router = useRouter();
@@ -19,7 +19,7 @@ export default function Bestellung() {
       name: String(f.get('name') || '').trim(),
       email: String(f.get('email') || '').trim(),
       phone: String(f.get('phone') || '').trim(),
-      items: lines.map((l) => ({ id: l.id, name: l.product.name, size: l.size, qty: l.qty, price: l.product.price })),
+      items: lines.map((l) => ({ id: l.id, name: cartName(l.product), size: l.size, qty: l.qty, price: l.product.price })),
       createdAt: new Date().toISOString(),
     };
     try {
@@ -48,7 +48,7 @@ export default function Bestellung() {
       <div className="summary">
         {lines.map((l) => (
           <div className="r" key={l.id + l.size}>
-            <span>{l.qty}× {l.product.name} · {l.size}</span>
+            <span>{l.qty}× {cartName(l.product)} · {l.size}</span>
             <span style={{ fontWeight: 500 }}>{euro(l.product.price)}</span>
           </div>
         ))}

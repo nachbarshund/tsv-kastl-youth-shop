@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { BackBar } from '../../components/TopBar';
 import Silhouette from '../../components/Silhouette';
 import { useCart } from '../../components/CartProvider';
-import { getProduct, euro } from '../../lib/products';
+import { getProduct, euro, cartName } from '../../lib/products';
 
 export default function Warenkorb() {
   const { items, ready, setQty, remove } = useCart();
@@ -27,7 +27,7 @@ export default function Warenkorb() {
                 <div className="thumb"><Silhouette kind={l.product.kind} size={52} /></div>
                 <div className="line-main">
                   <div className="row">
-                    <span className="t">{l.product.name}</span>
+                    <span className="t">{cartName(l.product)}</span>
                     <span>{euro(l.product.price)}</span>
                   </div>
                   <span className="sub">Größe {l.size}</span>

@@ -14,10 +14,10 @@ export default function Katalog() {
       <div className="banner">
         <strong>{DEADLINE ? `Sammelbestellung bis ${DEADLINE}` : 'Sammelbestellung läuft, Frist folgt'}</strong>
         <span>Wähle Größe und Artikel. Bestellt wird gesammelt, bezahlt wird später mit der Jugendleitung.</span>
+        <span>Alle Artikel sind bereits mit Vereinslogo.</span>
       </div>
       <section className="hero">
         <h1>Vereinskleidung</h1>
-        <p>Für Kinder, Damen und Herren</p>
       </section>
       {GROUPS.map((g) => {
         const list = PRODUCTS.filter((p) => p.group === g.id);
