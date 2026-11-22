@@ -11,7 +11,7 @@ export default function ProductImage({ product, size = 96 }) {
       alt={product.name}
       loading="lazy"
       onError={() => setFailed(true)}
-      style={{ width: '100%', height: '100%', objectFit: 'contain', mixBlendMode: 'multiply' }}
+      style={{ mixBlendMode: 'multiply' }}
     />
   );
 }
