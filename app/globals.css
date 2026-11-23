@@ -166,3 +166,12 @@ button, input { font-family: inherit; }
 .filter-bar::-webkit-scrollbar { display: none; }
 .filter-tab { flex: none; height: 36px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--field); background: #fff; color: var(--ink); font-size: 14px; font-weight: 600; cursor: pointer; transition: background 160ms, color 160ms; }
 .filter-tab[aria-selected='true'] { background: var(--accent); border-color: var(--accent); color: #fff; }
+.hero-card { margin: 16px 20px 0; padding: 22px 18px 18px; border-radius: 16px; background: var(--accent); color: #fff; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; }
+.hero-label { font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; opacity: 0.85; }
+.hero-date { font-size: 38px; line-height: 1.1; font-weight: 700; letter-spacing: -0.02em; }
+.hero-text { font-size: 13px; line-height: 1.45; opacity: 0.92; max-width: 460px; margin-top: 2px; }
+.hero-logo { width: 100%; margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.25); display: flex; align-items: center; justify-content: center; gap: 12px; text-align: left; }
+.hero-logo img { width: 36px; height: 36px; object-fit: contain; flex: none; background: #fff; border-radius: 50%; padding: 3px; box-sizing: border-box; }
+.hero-logo div { display: flex; flex-direction: column; gap: 2px; }
+.hero-logo strong { font-size: 14px; font-weight: 700; }
+.hero-logo span { font-size: 12.5px; line-height: 1.4; opacity: 0.92; }
