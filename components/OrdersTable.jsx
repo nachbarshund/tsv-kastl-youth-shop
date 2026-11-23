@@ -35,7 +35,7 @@ export default function OrdersTable({ orders }) {
               isOpen && (
                 <tr key={o.id + '-d'} className="detail-row">
                   <td colSpan={4}>
-                    <div className="detail">
+                    <div className="order-detail">
                       <div className="note">
                         <a href={`mailto:${o.email}`}>{o.email}</a> · <a href={`tel:${o.phone}`}>{o.phone}</a>
                       </div>

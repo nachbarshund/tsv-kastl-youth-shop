@@ -208,6 +208,6 @@ button, input { font-family: inherit; }
 .detail-btn { height: 32px; padding: 0 12px; border-radius: 16px; border: 1px solid var(--field); background: #fff; font-size: 13px; font-weight: 500; cursor: pointer; }
 .detail-btn[aria-expanded="true"] { background: var(--tint); border-color: var(--accent); color: var(--accent); }
 .detail-row td { padding: 0 0 12px; }
-.detail { background: var(--tint-soft); border-radius: 14px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
-.detail .r { display: flex; justify-content: space-between; font-size: 14px; }
-.detail .note a { text-decoration: underline; }
+.order-detail { background: var(--tint-soft); border-radius: 14px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
+.order-detail .r { display: flex; justify-content: space-between; font-size: 14px; }
+.order-detail .note a { text-decoration: underline; }
