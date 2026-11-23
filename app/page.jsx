@@ -1,15 +1,17 @@
 import Gate from '../components/Gate';
 import { ShopBar } from '../components/TopBar';
+import { isAdmin } from '../lib/auth';
 import Catalog from '../components/Catalog';
 import { PRODUCTS, GROUPS, DEADLINE } from '../lib/products';
 
 export const dynamic = 'force-dynamic';
 export const metadata = { title: 'Vereinskleidung · Jugendshop TSV Kastl' };
 
-export default function Katalog() {
+export default async function Katalog() {
+  const admin = await isAdmin();
   return (
     <Gate>
-      <ShopBar />
+      <ShopBar admin={admin} />
       <div className="hero-card">
         <span className="hero-label">Sammelbestellung bis</span>
         <strong className="hero-date">{DEADLINE || 'Frist folgt'}</strong>

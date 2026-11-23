@@ -35,14 +35,17 @@ function CartLink() {
   );
 }
 
-export function ShopBar() {
+export function ShopBar({ admin = false }) {
   return (
     <header className="topbar">
       <Link href="/" className="brand">
         <img src="/logo.png" alt="TSV Kastl Wappen" width="44" height="44" />
         <span>Jugendshop</span>
       </Link>
-      <CartLink />
+      <div className="topbar-right">
+        {admin && <Link href="/admin" className="admin-link">Admin</Link>}
+        <CartLink />
+      </div>
     </header>
   );
 }

@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { BackBar } from '../../components/TopBar';
 import { useCart } from '../../components/CartProvider';
@@ -7,26 +8,42 @@ import { getProduct, euro, cartName } from '../../lib/products';
 
 export default function Bestellung() {
   const router = useRouter();
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState('');
   const { items, ready, clear } = useCart();
   const lines = items.map((i) => ({ ...i, product: getProduct(i.id) })).filter((l) => l.product);
   const total = lines.reduce((s, l) => s + (l.product.price ?? 0) * l.qty, 0);
   const hasPrices = lines.length > 0 && lines.every((l) => l.product.price != null);
 
-  function submit(e) {
+  async function submit(e) {
     e.preventDefault();
+    if (busy) return;
     const f = new FormData(e.currentTarget);
-    const order = {
+    const payload = {
       name: String(f.get('name') || '').trim(),
       email: String(f.get('email') || '').trim(),
       phone: String(f.get('phone') || '').trim(),
-      items: lines.map((l) => ({ id: l.id, name: cartName(l.product), size: l.size, qty: l.qty, price: l.product.price })),
-      createdAt: new Date().toISOString(),
+      items: lines.map((l) => ({ id: l.id, size: l.size, qty: l.qty })),
     };
+    setBusy(true);
+    setError('');
     try {
-      localStorage.setItem('jugendshop-last-order', JSON.stringify(order));
-    } catch (err) {}
-    clear();
-    router.push('/danke');
+      const res = await fetch('/api/orders', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error('failed');
+      const { order } = await res.json();
+      try {
+        localStorage.setItem('jugendshop-last-order', JSON.stringify(order));
+      } catch (err) {}
+      clear();
+      router.push('/danke');
+    } catch (err) {
+      setBusy(false);
+      setError('Die Bestellung konnte nicht gespeichert werden. Bitte versuch es gleich noch einmal. Dein Warenkorb bleibt erhalten.');
+    }
   }
 
   if (ready && lines.length === 0) {
@@ -75,7 +92,8 @@ export default function Bestellung() {
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginTop: 8, paddingBottom: 32 }}>
           <p className="note">Bezahlt wird nicht im Shop, sondern später mit der Jugendleitung.</p>
-          <button type="submit" className="btn">Bestellung abschicken</button>
+          {error && <p className="error" role="alert">{error}</p>}
+          <button type="submit" className="btn" disabled={busy}>{busy ? 'Wird gesendet …' : 'Bestellung abschicken'}</button>
         </div>
       </form>
     </>
