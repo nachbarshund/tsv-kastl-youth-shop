@@ -157,3 +157,8 @@ button, input { font-family: inherit; }
 .detail .tile { width: auto; }
 @media (min-width: 760px) { .detail-body { padding: 20px 20px 24px 8px; } }
 .tile img.flock { inset: auto; height: auto; padding: 0; transform: translate(-50%, -50%); filter: invert(1); mix-blend-mode: screen; pointer-events: none; }
+.logo-note { margin: 10px 20px 0; padding: 14px 16px; border-radius: 16px; background: var(--accent); color: #fff; display: flex; align-items: center; gap: 14px; }
+.logo-note img { width: 36px; height: 36px; object-fit: contain; flex: none; background: #fff; border-radius: 50%; padding: 3px; box-sizing: border-box; }
+.logo-note div { display: flex; flex-direction: column; gap: 2px; }
+.logo-note strong { font-size: 15px; font-weight: 700; }
+.logo-note span { font-size: 13px; line-height: 1.4; opacity: 0.92; }

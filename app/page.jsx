@@ -14,7 +14,13 @@ export default function Katalog() {
       <div className="banner">
         <strong>{DEADLINE ? `Sammelbestellung bis ${DEADLINE}` : 'Sammelbestellung läuft, Frist folgt'}</strong>
         <span>Wähle Größe und Artikel. Bestellt wird gesammelt, bezahlt wird später mit der Jugendleitung.</span>
-        <span>Alle Artikel sind bereits mit Vereinslogo.</span>
+      </div>
+      <div className="logo-note">
+        <img src="/logo.png" alt="" width="36" height="36" />
+        <div>
+          <strong>Alle Artikel sind bereits mit Vereinslogo</strong>
+          <span>Du musst nichts extra bestellen, die Beflockung ist im Preis enthalten.</span>
+        </div>
       </div>
       <section className="hero">
         <h1>Vereinskleidung</h1>
