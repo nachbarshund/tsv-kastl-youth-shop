@@ -162,3 +162,7 @@ button, input { font-family: inherit; }
 .logo-note div { display: flex; flex-direction: column; gap: 2px; }
 .logo-note strong { font-size: 15px; font-weight: 700; }
 .logo-note span { font-size: 13px; line-height: 1.4; opacity: 0.92; }
+.filter-bar { position: sticky; top: 0; z-index: 5; display: flex; gap: 8px; padding: 10px 20px; background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); overflow-x: auto; scrollbar-width: none; }
+.filter-bar::-webkit-scrollbar { display: none; }
+.filter-tab { flex: none; height: 36px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--field); background: #fff; color: var(--ink); font-size: 14px; font-weight: 600; cursor: pointer; transition: background 160ms, color 160ms; }
+.filter-tab[aria-selected='true'] { background: var(--accent); border-color: var(--accent); color: #fff; }
