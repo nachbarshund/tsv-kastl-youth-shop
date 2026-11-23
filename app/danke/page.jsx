@@ -33,7 +33,7 @@ export default function Danke() {
       <p className="sub">
         Wir haben Deine Auswahl erhalten. Bestellt wird gesammelt bis zum 01.01.2027, bezahlt wird später mit der Jugendleitung.
       </p>
-      <p className="sub">
+      <p className="sub" style={{ color: 'var(--accent)', fontWeight: 600 }}>
         Du bekommst keine Bestätigung per E-Mail. Deine Bestellung ist auf diesem Gerät gespeichert und unter „Meine Bestellungen“ jederzeit einsehbar.
       </p>
       {order && (
