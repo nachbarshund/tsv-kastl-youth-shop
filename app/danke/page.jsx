@@ -33,6 +33,9 @@ export default function Danke() {
       <p className="sub">
         Wir haben Deine Auswahl erhalten. Bestellt wird gesammelt bis zum 01.01.2027, bezahlt wird später mit der Jugendleitung.
       </p>
+      <p className="sub">
+        Du bekommst keine Bestätigung per E-Mail. Deine Bestellung ist auf diesem Gerät gespeichert und unter „Meine Bestellungen“ jederzeit einsehbar.
+      </p>
       {order && (
         <div className="summary">
           {order.items.map((i) => (
@@ -47,6 +50,7 @@ export default function Danke() {
           </div>
         </div>
       )}
+      <Link href="/meine-bestellungen" className="btn">Meine Bestellungen</Link>
       <Link href="/" className="btn outline">Zurück zum Shop</Link>
     </main>
   );

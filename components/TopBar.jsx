@@ -44,6 +44,12 @@ export function ShopBar({ admin = false }) {
       </Link>
       <div className="topbar-right">
         {admin && <Link href="/admin" className="admin-link">Admin</Link>}
+        <Link href="/meine-bestellungen" className="icon-btn" aria-label="Meine Bestellungen" title="Meine Bestellungen">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M7 3h10a1 1 0 0 1 1 1v17l-3-2-3 2-3-2-3 2V4a1 1 0 0 1 1-1z" />
+            <path d="M9 8h6M9 12h6" />
+          </svg>
+        </Link>
         <CartLink />
         <form method="POST" action="/api/logout" style={{ display: 'flex' }}>
           <button type="submit" className="icon-btn logout-btn" aria-label="Abmelden" title="Abmelden">

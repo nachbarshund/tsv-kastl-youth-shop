@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { BackBar } from '../../components/TopBar';
 import { useCart } from '../../components/CartProvider';
 import { getProduct, euro, cartName } from '../../lib/products';
+import { saveLocalOrder } from '../../lib/localOrders';
 
 export default function Bestellung() {
   const router = useRouter();
@@ -39,6 +40,7 @@ export default function Bestellung() {
       try {
         localStorage.setItem('jugendshop-last-order', JSON.stringify(order));
       } catch (err) {}
+      saveLocalOrder(order);
       // Warenkorb wird erst auf der Danke-Seite geleert, damit hier kein „leer"-Zustand aufblitzt
       setDone(true);
       router.push('/danke');
