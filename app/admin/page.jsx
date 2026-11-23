@@ -1,9 +1,9 @@
-import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { isAdmin } from '../../lib/auth';
 import { listOrders, storageConfigured } from '../../lib/orders';
 import { euro } from '../../lib/products';
 import { BackBar } from '../../components/TopBar';
+import OrdersTable from '../../components/OrdersTable';
 
 export const dynamic = 'force-dynamic';
 export const metadata = { title: 'Admin', robots: { index: false, follow: false } };
@@ -23,6 +23,11 @@ export default async function Admin() {
   const sum = (o) => o.items.reduce((s, i) => s + (i.price ?? 0) * i.qty, 0);
   const total = orders.reduce((s, o) => s + sum(o), 0);
   const pieces = orders.reduce((s, o) => s + o.items.reduce((a, i) => a + i.qty, 0), 0);
+
+  const rows = orders.map((o) => ({
+    id: o.id, name: o.name, email: o.email, phone: o.phone, items: o.items,
+    date: fmt(o.createdAt), sum: sum(o), hasPrices: o.items.every((i) => i.price != null),
+  }));
 
   // Sammelbestellung: je Artikel + Größe aufsummiert
   const agg = new Map();
@@ -57,23 +62,7 @@ export default async function Admin() {
       </div>
 
       <h2 className="h2">Alle Bestellungen</h2>
-      <div className="admin-orders">
-        {orders.map((o) => (
-          <div className="summary" style={{ margin: 0 }} key={o.id}>
-            <div className="r" style={{ fontWeight: 600 }}>
-              <span>{o.name}</span>
-              <span>{euro(sum(o))}</span>
-            </div>
-            <div className="note">{fmt(o.createdAt)} · <a href={`mailto:${o.email}`}>{o.email}</a> · <a href={`tel:${o.phone}`}>{o.phone}</a></div>
-            {o.items.map((i) => (
-              <div className="r" key={i.name + i.size}>
-                <span>{i.qty}× {i.name} · {i.size}</span>
-                <span>{euro(i.price)}</span>
-              </div>
-            ))}
-          </div>
-        ))}
-      </div>
+      <OrdersTable orders={rows} />
       <div style={{ height: 24 }} />
     </>
   );
