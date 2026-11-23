@@ -175,3 +175,12 @@ button, input { font-family: inherit; }
 .hero-logo div { display: flex; flex-direction: column; gap: 2px; }
 .hero-logo strong { font-size: 14px; font-weight: 700; }
 .hero-logo span { font-size: 12.5px; line-height: 1.4; opacity: 0.92; }
+/* dezentere Variante: heller Hintergrund, dunkler Rand, dunkles Datum */
+.hero-card { background: var(--tint); color: var(--ink); border: 1.5px solid var(--accent); margin-bottom: 22px; }
+.hero-label { color: var(--accent); opacity: 1; }
+.hero-date { color: var(--accent); }
+.hero-text { color: #3d4a46; opacity: 1; }
+.hero-logo { border-top-color: rgba(46, 125, 107, 0.35); }
+.hero-logo img { background: #fff; border: 1px solid rgba(46, 125, 107, 0.3); }
+.hero-logo strong { color: var(--ink); }
+.hero-logo span { color: #3d4a46; opacity: 1; }
