@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { euro } from '../../lib/products';
 import { useCart } from '../../components/CartProvider';
+import { LogoBar } from '../../components/TopBar';
 
 export default function Danke() {
   const [order, setOrder] = useState(null);
@@ -23,6 +24,8 @@ export default function Danke() {
   const total = order ? order.items.reduce((s, i) => s + (i.price ?? 0) * i.qty, 0) : 0;
 
   return (
+    <>
+    <LogoBar />
     <main className="center">
       <div className="check">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -53,5 +56,6 @@ export default function Danke() {
       <Link href="/meine-bestellungen" className="btn">Meine Bestellungen</Link>
       <Link href="/" className="btn outline">Zurück zum Shop</Link>
     </main>
+    </>
   );
 }

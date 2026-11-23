@@ -76,7 +76,23 @@ export function BackBar({ title, href = '/', cart = false }) {
         </Link>
         {title && <h1 className="bar-title">{title}</h1>}
       </div>
-      {cart && <CartLink />}
+      <div className="topbar-right">
+        {cart && <CartLink />}
+        <Link href="/" className="bar-logo" aria-label="Zum Jugendshop">
+          <img src="/logo.png" alt="TSV Kastl Wappen" width="40" height="40" />
+        </Link>
+      </div>
+    </header>
+  );
+}
+
+export function LogoBar() {
+  return (
+    <header className="topbar">
+      <Link href="/" className="brand">
+        <img src="/logo.png" alt="TSV Kastl Wappen" width="44" height="44" />
+        <span>Jugendshop</span>
+      </Link>
     </header>
   );
 }
