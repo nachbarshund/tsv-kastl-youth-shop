@@ -211,3 +211,6 @@ button, input { font-family: inherit; }
 .order-detail { background: var(--tint-soft); border-radius: 14px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
 .order-detail .r { display: flex; justify-content: space-between; font-size: 14px; }
 .order-detail .note a { text-decoration: underline; }
+
+/* Bestätigungs-Sheet bleibt nach dem Hinzufügen sichtbar (sticky), Inhalt rutscht nicht darunter */
+.detail.sheet-open { padding-bottom: calc(150px + env(safe-area-inset-bottom)); }

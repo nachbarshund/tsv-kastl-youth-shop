@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import ProductImage from '../../../components/ProductImage';
 import { useCart } from '../../../components/CartProvider';
@@ -11,25 +11,19 @@ export default function ProductView({ product }) {
   const [qty, setQty] = useState(1);
   const [sheet, setSheet] = useState(null);
   const [open, setOpen] = useState(false);
-  const timer = useRef(null);
-
-  useEffect(() => () => clearTimeout(timer.current), []);
 
   function addToCart() {
     add(product.id, size, qty);
     setSheet({ name: product.name, size, qty });
     setOpen(true);
-    clearTimeout(timer.current);
-    timer.current = setTimeout(() => setOpen(false), 3500);
   }
 
   function close() {
-    clearTimeout(timer.current);
     setOpen(false);
   }
 
   return (
-    <div className="detail">
+    <div className={open ? 'detail sheet-open' : 'detail'}>
       <div className="tile">
         <ProductImage product={product} size={200} showFlock />
       </div>
@@ -65,7 +59,6 @@ export default function ProductView({ product }) {
         )}
       </div>
 
-      <div className={open ? 'sheet-backdrop open' : 'sheet-backdrop'} onClick={close} aria-hidden="true" />
       <div className={open ? 'sheet open' : 'sheet'} role="status" aria-live="polite">
         {sheet && (
           <>
