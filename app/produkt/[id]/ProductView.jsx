@@ -60,6 +60,9 @@ export default function ProductView({ product }) {
             In den Warenkorb
           </button>
         </div>
+        {product.flock && (
+          <p className="flock-note">Das Logo ist nur eine Vorschau. Beim Druck wird es passend zum Artikel positioniert, z. B. symmetrisch zum Erima-Logo.</p>
+        )}
       </div>
 
       <div className={open ? 'sheet-backdrop open' : 'sheet-backdrop'} onClick={close} aria-hidden="true" />

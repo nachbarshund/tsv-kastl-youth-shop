@@ -184,3 +184,4 @@ button, input { font-family: inherit; }
 .hero-logo img { background: #fff; border: 1px solid rgba(46, 125, 107, 0.3); }
 .hero-logo strong { color: var(--ink); }
 .hero-logo span { color: #3d4a46; opacity: 1; }
+.flock-note { margin: 18px 0 0; font-size: 12px; line-height: 1.45; color: #8a9591; }
