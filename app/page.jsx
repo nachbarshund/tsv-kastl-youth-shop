@@ -21,9 +21,6 @@ export default function Katalog() {
           <span>Du musst nichts extra bestellen, die Beflockung ist im Preis enthalten.</span>
         </div>
       </div>
-      <section className="hero">
-        <h1>Vereinskleidung</h1>
-      </section>
       <Catalog products={PRODUCTS} groups={GROUPS} />
     </Gate>
   );
