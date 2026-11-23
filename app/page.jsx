@@ -35,7 +35,7 @@ export default function Katalog() {
               {list.map((p) => (
                 <Link key={p.id} href={`/produkt/${p.id}`} className="card">
                   <div className="tile">
-                    <ProductImage product={p} size={96} />
+                    <ProductImage product={p} size={96} showFlock />
                   </div>
                   <div>
                     <div className="name">{p.name}</div>
