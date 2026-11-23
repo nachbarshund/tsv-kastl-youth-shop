@@ -41,7 +41,10 @@ export default function OrdersTable({ orders }) {
                       </div>
                       {o.items.map((i) => (
                         <div className="r" key={i.name + i.size}>
-                          <span>{i.qty}× {i.name} · {i.size}</span>
+                          <span>
+                            {i.qty}× {i.name} · {i.size}
+                            {i.artNr && <span style={{ color: 'var(--muted)', fontSize: 13 }}> · Art.-Nr. {i.artNr}</span>}
+                          </span>
                           <span>{euro(i.price)}</span>
                         </div>
                       ))}

@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation';
 import { isAdmin } from '../../lib/auth';
 import { listOrders, storageConfigured } from '../../lib/orders';
-import { euro } from '../../lib/products';
+import { euro, getProduct } from '../../lib/products';
 import { BackBar } from '../../components/TopBar';
 import OrdersTable from '../../components/OrdersTable';
 
@@ -24,8 +24,12 @@ export default async function Admin() {
   const total = orders.reduce((s, o) => s + sum(o), 0);
   const pieces = orders.reduce((s, o) => s + o.items.reduce((a, i) => a + i.qty, 0), 0);
 
+  // Artikelnummer kommt aus dem Katalog (über die Produkt-ID), gilt damit auch für ältere Bestellungen
+  const artNr = (i) => getProduct(i.id)?.artNr || null;
+
   const rows = orders.map((o) => ({
-    id: o.id, name: o.name, email: o.email, phone: o.phone, items: o.items,
+    id: o.id, name: o.name, email: o.email, phone: o.phone,
+    items: o.items.map((i) => ({ ...i, artNr: artNr(i) })),
     date: fmt(o.createdAt), sum: sum(o), hasPrices: o.items.every((i) => i.price != null),
   }));
 
@@ -33,7 +37,7 @@ export default async function Admin() {
   const agg = new Map();
   for (const o of orders) for (const i of o.items) {
     const k = i.name + '||' + i.size;
-    agg.set(k, { name: i.name, size: i.size, qty: (agg.get(k)?.qty || 0) + i.qty });
+    agg.set(k, { name: i.name, size: i.size, artNr: artNr(i), qty: (agg.get(k)?.qty || 0) + i.qty });
   }
   const totals = [...agg.values()].sort((a, b) => a.name.localeCompare(b.name, 'de') || a.size.localeCompare(b.size, 'de', { numeric: true }));
 
@@ -55,7 +59,10 @@ export default async function Admin() {
         {totals.length === 0 && <span className="note">Noch keine Bestellungen.</span>}
         {totals.map((t) => (
           <div className="r" key={t.name + t.size}>
-            <span>{t.name} · {t.size}</span>
+            <span>
+              {t.name} · {t.size}
+              {t.artNr && <span style={{ color: 'var(--muted)', fontSize: 13 }}> · Art.-Nr. {t.artNr}</span>}
+            </span>
             <span style={{ fontWeight: 600 }}>{t.qty}×</span>
           </div>
         ))}
