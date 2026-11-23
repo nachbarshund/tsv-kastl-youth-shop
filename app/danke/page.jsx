@@ -2,15 +2,21 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { euro } from '../../lib/products';
+import { useCart } from '../../components/CartProvider';
 
 export default function Danke() {
   const [order, setOrder] = useState(null);
+  const { clear } = useCart();
 
   useEffect(() => {
     try {
       const raw = localStorage.getItem('jugendshop-last-order');
-      if (raw) setOrder(JSON.parse(raw));
+      if (raw) {
+        setOrder(JSON.parse(raw));
+        clear();
+      }
     } catch (e) {}
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const hasPrices = order && order.items.every((i) => i.price != null);

@@ -9,8 +9,9 @@ import { getProduct, euro, cartName } from '../../lib/products';
 export default function Bestellung() {
   const router = useRouter();
   const [busy, setBusy] = useState(false);
+  const [done, setDone] = useState(false);
   const [error, setError] = useState('');
-  const { items, ready, clear } = useCart();
+  const { items, ready } = useCart();
   const lines = items.map((i) => ({ ...i, product: getProduct(i.id) })).filter((l) => l.product);
   const total = lines.reduce((s, l) => s + (l.product.price ?? 0) * l.qty, 0);
   const hasPrices = lines.length > 0 && lines.every((l) => l.product.price != null);
@@ -38,12 +39,22 @@ export default function Bestellung() {
       try {
         localStorage.setItem('jugendshop-last-order', JSON.stringify(order));
       } catch (err) {}
-      clear();
+      // Warenkorb wird erst auf der Danke-Seite geleert, damit hier kein „leer"-Zustand aufblitzt
+      setDone(true);
       router.push('/danke');
     } catch (err) {
       setBusy(false);
       setError('Die Bestellung konnte nicht gespeichert werden. Bitte versuch es gleich noch einmal. Dein Warenkorb bleibt erhalten.');
     }
+  }
+
+  if (done) {
+    return (
+      <>
+        <BackBar title="Bestellung" href="/" />
+        <div className="empty"><p>Bestellung wird abgeschlossen …</p></div>
+      </>
+    );
   }
 
   if (ready && lines.length === 0) {
