@@ -197,3 +197,4 @@ button, input { font-family: inherit; }
 .admin-orders { display: flex; flex-direction: column; gap: 12px; padding: 14px 20px 0; }
 .admin-link { display: inline-flex; align-items: center; height: 32px; padding: 0 12px; border-radius: 16px; background: var(--tint); color: var(--accent); font-size: 13px; font-weight: 600; }
 .topbar-right { display: flex; align-items: center; gap: 4px; }
+.logout-btn { background: none; border: none; padding: 0; cursor: pointer; color: var(--muted); }
